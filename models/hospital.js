@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
 
-const orgSchema = mongoose.Schema({
+
+const hospitalSchema = mongoose.Schema({
+    
     name:{
         type:String,
         required:true
@@ -28,11 +29,14 @@ const orgSchema = mongoose.Schema({
         },
         image:{
             type:String
+        },
+        phoneNumber:{
+            type:Number
         }
     }]
     
 });
 
-const Organisations = mongoose.model("Organisations",orgSchema);
+const Hospitals = mongoose.model("Hospitals",hospitalSchema);
 
-module.exports = Organisations;
+module.exports = Hospitals;

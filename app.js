@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const userroutes = require('../ClinicSync/routes/userroutes')
+const doctorRoutes = require('./routes/doctorRoutes')
+const userRoutes = require('./routes/userroutes')
+const hospitalroutes = require('./routes/HospitalRoutes')
 
 mongoose.connect('mongodb+srv://nithiyaR:nithiya2005@cluster0.a02jqzo.mongodb.net/ClinicSync?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => {
@@ -13,7 +15,10 @@ mongoose.connect('mongodb+srv://nithiyaR:nithiya2005@cluster0.a02jqzo.mongodb.ne
 app.use(bodyParser.json());
 app.use(cors());
 app.set('view engine','ejs');
-app.use('/',userroutes);
+
+app.use('/api',hospitalroutes)
+app.use('/api',doctorRoutes)
+app.use('/api',userRoutes)
 
 app.listen(4000,() => {
     console.log("Server is running on 4000");

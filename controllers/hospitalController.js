@@ -1,9 +1,8 @@
-const Organisations = require('../models/organisationModel');
-const User = require('../models/usermodel');
+const Hospitals = require('../models/hospital');
 const {v4:uuidv4} = require('uuid') 
-const getOrg = async(req,res) =>{
+const getHospital = async(req,res) =>{
     try{
-       const org = await Organisations.find();
+       const org = await Hospitals.find();
        res.status(200).send(org);
     }
     catch(err){
@@ -11,11 +10,12 @@ const getOrg = async(req,res) =>{
     }
 }
 
-const addOrg = async (req, res) => {
+const addHospital = async (req, res) => {
     try {
-      const { name, address, image, doctors } = req.body;
+      const {name, address, image, doctors } = req.body;
   
-      const newOrg = new Organisations({
+      const newOrg = new Hospitals({
+        
         name,
         address,
         image,
@@ -39,7 +39,7 @@ const addOrg = async (req, res) => {
       const { orgId } = req.params; 
       const { name, speciality, image } = req.body;
   
-      const organization = await Organisations.findOne({ orgId });
+      const organization = await Hospitals.findOne({ orgId });
       if (!organization) {
         return res.status(404).send('Organization not found');
       }
@@ -62,4 +62,4 @@ const addOrg = async (req, res) => {
   };
   
 
-module.exports = {getOrg,addOrg,addDoctor};
+module.exports = {getHospital,addHospital,addDoctor};
