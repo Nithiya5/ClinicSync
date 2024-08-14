@@ -1,9 +1,9 @@
 const express = require('express');
 const doctorController = require('../controllers/doctorController');
+const auth = require('../middlewares/auth')
 
 const Router = express.Router();
 
-Router.get('/get-doctors/:orgId', doctorController.getDoctors);
-Router.post('/add-doctor/:orgId',doctorController.addDoctor)
+Router.post('/bookappointment/:doctorId',auth,doctorController.addDoctor)
 
 module.exports = Router;

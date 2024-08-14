@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 
 const hospitalSchema = mongoose.Schema({
-    
+    orgId:{
+        type:String,
+        required:true
+    },
     name:{
         type:String,
         required:true
@@ -30,9 +33,11 @@ const hospitalSchema = mongoose.Schema({
         image:{
             type:String
         },
-        phoneNumber:{
-            type:Number
+        degree:{
+            type:String,
+            requird:true
         }
+       
     }]
     
 });

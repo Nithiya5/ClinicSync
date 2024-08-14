@@ -29,7 +29,7 @@ const addAppointment = async (req, res) => {
     res.status(201).send({ message: "Appointment booked successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ message: "Server error" });
+    res.status(500).send({ message: "Failed to book" });
   }
 };
 
